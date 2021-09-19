@@ -1,13 +1,12 @@
+require('dotenv').config();
+
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
 const { interface, bytecode } = require('./compile');
 
 const provider = new HDWalletProvider(
-    // it should not be stored in code, but this is a test account without any real money
-    'immense journey flavor success fabric mammal clinic crater cook regular abandon south',
-    // rinkeby endpoint url from infura.io
-    'https://rinkeby.infura.io/v3/26d4ff93d63b4d469dd1189ab5821f64'
-);
+    process.env.MNEMONIC, 
+    process.env.RINKEBY_ENDPOINT);
 
 const web3 = new Web3(provider);
 
@@ -27,4 +26,3 @@ const deploy = async () => {
 }; 
 
 deploy();
-// 0x362d42724BDdA60aDa666BA1adDf05AbAa10575f
